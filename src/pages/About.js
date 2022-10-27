@@ -18,6 +18,7 @@ const About = () => {
       <div className="home">
         <Posts />
         <Sidebar />
+        
       </div>
     </div>
   );

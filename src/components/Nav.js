@@ -7,6 +7,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import PersonIcon from "@mui/icons-material/Person";
 import ReorderIcon from "@mui/icons-material/Reorder";
 
+
 const Nav = () => {
   const [expandNav, setExpandNav] = useState(false);
   const location = useLocation();
@@ -16,6 +17,7 @@ const Nav = () => {
   return (
     <div className="navbar" id={expandNav ? "open" : "close"}>
       <div className="left-nav">
+        
         <FacebookIcon />
         <LinkedInIcon />
         <TwitterIcon />

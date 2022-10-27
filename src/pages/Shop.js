@@ -4,8 +4,11 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import Dog from "./Dog";
+
+
 const Shop = () => {
   const [dogs, setDogs] = useState([]);
+  const [loading,setLoading] = useState(true)
 
   // useEffect(() => {
   //   const options = {
@@ -27,23 +30,24 @@ const Shop = () => {
   //       console.error(error);
   //     });
   // }, []);
-useEffect(() => {
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d',
-      'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
-    }
-  };
-  
-  fetch('https://dog-breeds2.p.rapidapi.com/dog_breeds', options)
-    .then(response => response.json())
-    .then(response => {
-      setDogs(response)
-    })
-   
-    .catch(err => console.error(err));
-},[])
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d",
+        "X-RapidAPI-Host": "dog-breeds2.p.rapidapi.com",
+      },
+    };
+
+    fetch("https://dog-breeds2.p.rapidapi.com/dog_breeds", options)
+      .then((response) => response.json())
+      .then((response) => {
+        setDogs(response);
+        setLoading(false)
+      })
+
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <div className="shop-header">
       {dogs
@@ -51,6 +55,10 @@ useEffect(() => {
           <Dog key={key} origin={dog.origin} img={dog.img} breed={dog.breed} />
         ))
         .slice(20, 25, dogs.length)}
+      
+<div className="loader"></div>
+      {/* {loading ?(<span className="loading">Loading...</span>): (null) } */}
+      
     </div>
   );
 };
