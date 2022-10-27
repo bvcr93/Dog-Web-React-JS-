@@ -7,27 +7,43 @@ import Dog from "./Dog";
 const Shop = () => {
   const [dogs, setDogs] = useState([]);
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://dog-breeds2.p.rapidapi.com/dog_breeds",
-      headers: {
-        "X-RapidAPI-Key": "6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d",
-        "X-RapidAPI-Host": "dog-breeds2.p.rapidapi.com",
-      },
-    };
+  // useEffect(() => {
+  //   const options = {
+  //     method: "GET",
+  //     url: "https://dog-breeds2.p.rapidapi.com/dog_breeds",
+  //     headers: {
+  //       "X-RapidAPI-Key": "6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d",
+  //       "X-RapidAPI-Host": "dog-breeds2.p.rapidapi.com",
+  //     },
+  //   };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-        setDogs(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
-
+  //   axios
+  //     .request(options)
+  //     .then(function (response) {
+  //       console.log(response);
+  //       setDogs(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, []);
+useEffect(() => {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d',
+      'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://dog-breeds2.p.rapidapi.com/dog_breeds', options)
+    .then(response => response.json())
+    .then(response => {
+      setDogs(response)
+    })
+   
+    .catch(err => console.error(err));
+},[])
   return (
     <div className="shop-header">
       {dogs
