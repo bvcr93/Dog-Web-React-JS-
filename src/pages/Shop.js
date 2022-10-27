@@ -56,8 +56,8 @@ const Shop = () => {
         ))
         .slice(20, 25, dogs.length)}
       
-<div className="loader"></div>
-      {/* {loading ?(<span className="loading">Loading...</span>): (null) } */}
+
+      {loading ?(<div className="loader"></div>): (null) }
       
     </div>
   );
