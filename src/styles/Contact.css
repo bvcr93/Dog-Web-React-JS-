@@ -23,7 +23,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 350px;
 }
 
 form > input {
@@ -32,11 +32,10 @@ form > input {
   border-radius: 10px;
   border: none;
   width: 100%;
-  
 }
 
 .contact-btn {
-  width: 50%;
+  width: 100%;
   padding: 8px;
   margin-top: 10px;
   border-radius: 5px;
@@ -52,9 +51,8 @@ form > input {
   color: rgb(86, 86, 86);
 }
 @media only screen and (max-width: 700px) {
-  .contact-form , .form {
+  .contact-form,
+  .form {
     width: 100%;
-    
   }
-  }
- 
+}
