@@ -4,7 +4,6 @@ import "../styles/Posts.css";
 const Posts = () => {
   return (
     <div className="posts">
-        
       <div className="post-title">MAKE YOUR DOG HAPPY</div>
 
       <div className="post-about">
@@ -18,7 +17,6 @@ const Posts = () => {
         Vitae dicta laboriosam aliquid blanditiis sint, impedit expedita. Nihil
         soluta iste dolores eos dicta consequatur quidem incidunt in officiis
         odio! Nesciunt dignissimos, et voluptatum totam aliquam, debitis
-       
       </div>
 
       <div className="post-img">
