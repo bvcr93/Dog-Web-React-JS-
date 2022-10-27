@@ -1,0 +1,51 @@
+.contact-wrapper {
+ height: 90vh;
+ background-image: url("https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg?w=2000");
+ background-repeat: no-repeat;
+ background-size: cover;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.contact-form {
+    width: 50%;
+    height: 60vh;
+    background-color: rgb(221, 221, 221);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+form > input {
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    
+}
+
+.contact-btn {
+    width: 50%;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(80, 80, 80);
+    color: white;
+    font-size: 20px;
+}
+
+.contact-wrapper > h1 {
+    margin-bottom: 60px;
+    font-family:'Courier New', Courier, monospace;
+    color: rgb(86, 86, 86);
+}
