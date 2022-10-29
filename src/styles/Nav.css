@@ -55,7 +55,7 @@
   cursor: pointer;
 }
 
-.person-icon {
+.person-icon, .login-btn {
   border: none;
   background: none;
   cursor: pointer;

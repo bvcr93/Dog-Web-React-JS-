@@ -29,7 +29,7 @@
 }
 
 .adopt-btn {
-  width: 50%;
+  width: 100%;
   cursor: pointer;
   padding: 10px;
   border-radius: 5px;
@@ -45,7 +45,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 @media only screen and (max-width: 700px) {
-  .dog-container {
-    display: flex;
-  }
+ .adopt-btn {
+  display: flex;
+ }
 }
