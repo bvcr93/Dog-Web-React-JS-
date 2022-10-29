@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Route, Navigate, Routes } from "react-router-dom";
-const ProtectedRoute = ({ isAuth: isAuth, component: Details, ...rest }) => {
+import { UserContext } from "./UserContext";
+
+
+const ProtectedRoute = ({ component: Details, ...rest }) => {
+
+  const {isAuth} = useContext(UserContext)
   return (
-   <Routes>
+   
     <Route
       {...rest}
       render={(props) => {
         
-        if (isAuth) {
+        if (isAuth === true) {
           return <Details />;
         } else {
           return (
@@ -18,7 +23,7 @@ const ProtectedRoute = ({ isAuth: isAuth, component: Details, ...rest }) => {
         }
       }}
     />
-    </Routes>
+
   );
 };
 

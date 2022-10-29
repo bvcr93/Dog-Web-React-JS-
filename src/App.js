@@ -12,6 +12,8 @@ import { UserContext, UserProvider } from "./components/UserContext";
 
 const App = () => {
 
+  
+
   const [showNav, setShowNav] = useState(true)
 
   return (
@@ -24,7 +26,7 @@ const App = () => {
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/details" element={<Details/>} />
+            {/* <Route path="/details" element={<Details/>} /> */}
             <Route path="/details/:id/*" element={<ProtectedRoute />} />
 
           </Routes>
