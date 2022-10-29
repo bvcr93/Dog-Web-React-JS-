@@ -11,10 +11,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContext, UserProvider } from "./components/UserContext";
 
 const App = () => {
+
+  const [showNav, setShowNav] = useState(true)
+
   return (
     <UserProvider>
       <BrowserRouter>
-        <div className="App">
+       
           <Nav />
           <Routes>
             <Route path="/about" element={<About />} />
@@ -26,7 +29,7 @@ const App = () => {
 
           </Routes>
           <Footer />
-        </div>
+     
       </BrowserRouter>
     </UserProvider>
   );

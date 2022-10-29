@@ -48,6 +48,7 @@ const Shop = () => {
 
       .catch((err) => console.error(err));
   }, []);
+
   return (
     <div className="shop-header">
       {dogs

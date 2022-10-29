@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "../styles/Details.css"
 
-const Details = () => {
+const Details = ({}) => {
 
   const [details, setDetails] = useState([])
 
