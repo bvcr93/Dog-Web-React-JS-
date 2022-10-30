@@ -12,13 +12,15 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContext, UserProvider } from "./components/UserContext";
 
 const App = () => {
- 
-  const isAuth = useContext(UserContext);
+
+  const [showNav, setShowNav] = useState(false)
+  const [showFooter, setShowFooter] = useState(false)
 
   return (
     <UserProvider>
       <BrowserRouter>
-        {Login ? <Nav /> : null}
+      {showNav && <Nav/> }
+         
 
         <Routes>
           <Route element={<ProtectedRoute />}>
@@ -27,15 +29,18 @@ const App = () => {
           <Route element={<ProtectedRoute />}>
             <Route element={<Details />} path="/details/:id/*" />
           </Route>
-           <Route path="/" exact element={<Landing />} />
-          {/* {isAuth && <Route path="/" exact element={<Landing />} />} */}
+          <Route element={<ProtectedRoute />}>
+            <Route element={<Landing />} path="/" />
+          </Route>
 
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setShowNav = {setShowNav} setShowFooter = {setShowFooter}/>} />
+
           <Route path="/details/:id/*" element={<Details />} />
         </Routes>
-        {Login ? !(<Footer />) : null}
+        {showFooter && <Footer /> }
+      
       </BrowserRouter>
     </UserProvider>
   );

@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 export function UserProvider(props) {
+  const [showNav, setShowNav] = useState(false)
   const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
@@ -10,7 +11,7 @@ export function UserProvider(props) {
   }, [isAuth]);
 
   return (
-    <UserContext.Provider value={{ isAuth, setIsAuth }}>
+    <UserContext.Provider value={{ isAuth, setIsAuth, showNav, setShowNav }}>
       {props.children}
     </UserContext.Provider>
   );

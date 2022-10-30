@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "../styles/Login.css";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
-const Login = () => {
+const Login = ({setShowNav, setShowFooter}) => {
   const { setIsAuth, isAuth } = useContext(UserContext);
 
   return (
@@ -13,6 +13,8 @@ const Login = () => {
         <input type="email" placeholder="Email..." />
         <button className="sign-in-btn" onClick={() => setIsAuth(true)}>
           {isAuth && <Navigate to="/" />}
+          {isAuth ? setShowNav(true) : setShowNav(false)}
+          {isAuth ? setShowFooter(true) : setShowFooter(false)}
           Sign in
         </button>
       </div>
