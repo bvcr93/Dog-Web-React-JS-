@@ -50,12 +50,12 @@ const Shop = () => {
         console.log(response);
         setDogs(response);
         setLoading(false);
-        setErr(null)
+        setErr(null);
       })
 
       .catch((err) => {
-        setLoading(false)
-        setErr(err.message)
+        setLoading(false);
+        setErr(err.message);
       });
   }, []);
 

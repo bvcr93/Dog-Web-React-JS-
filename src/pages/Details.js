@@ -6,7 +6,7 @@ const Details = () => {
   const { id } = useParams();
 
   const [details, setDetails] = useState([]);
-  const [err, setErr] = useState(null)
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     const options = {
