@@ -8,6 +8,7 @@ import Dog from "./Dog";
 const Shop = () => {
   const [dogs, setDogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState();
 
   // useEffect(() => {
   //   const options = {
@@ -39,24 +40,39 @@ const Shop = () => {
     };
 
     fetch("https://dog-breeds2.p.rapidapi.com/dog_breeds", options)
-      .then((response) => response.json())
       .then((response) => {
-        console.log(response)
+        if (!response.ok) {
+          throw Error("could not fetch the data");
+        }
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
         setDogs(response);
         setLoading(false);
+        setErr(null)
       })
 
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoading(false)
+        setErr(err.message)
+      });
   }, []);
 
   return (
     <div className="shop-header">
       {dogs
         .map((dog, key) => (
-          <Dog id= {key} key={key} origin={dog.origin} img={dog.img} breed={dog.breed} />
+          <Dog
+            id={key}
+            key={key}
+            origin={dog.origin}
+            img={dog.img}
+            breed={dog.breed}
+          />
         ))
         .slice(20, 25, dogs.length)}
-
+      {err && <h2>{err}</h2>}
       {loading ? <div className="loader"></div> : null}
     </div>
   );

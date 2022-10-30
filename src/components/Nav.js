@@ -6,7 +6,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import PersonIcon from "@mui/icons-material/Person";
 import ReorderIcon from "@mui/icons-material/Reorder";
-import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from "@mui/icons-material/Login";
 
 const Nav = () => {
   const [expandNav, setExpandNav] = useState(false);
@@ -17,7 +17,6 @@ const Nav = () => {
   return (
     <div className="navbar" id={expandNav ? "open" : "close"}>
       <div className="left-nav">
-        
         <FacebookIcon />
         <LinkedInIcon />
         <TwitterIcon />
@@ -31,10 +30,10 @@ const Nav = () => {
         <button className="person-icon">
           <PersonIcon />
         </button>
-        <Link to = "/login">
+        <Link to="/login">
           <button className="login-btn">
-        <LoginIcon/>
-        </button>
+            <LoginIcon />
+          </button>
         </Link>
         <Link to="/checkout"></Link>
 

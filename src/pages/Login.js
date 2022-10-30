@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "../styles/Login.css";
 import { UserContext } from "../components/UserContext";
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
         <input type="text" placeholder="First Name..." />
         <input type="text" placeholder="Last Name..." />
         <input type="email" placeholder="Email..." />
-        <button className="sign-in-btn" onClick={() => setIsAuth(true)}>
+        <button className="sign-in-btn" onClick={() => setIsAuth(prev => !prev)}>
           Sign in
         </button>
       </div>
