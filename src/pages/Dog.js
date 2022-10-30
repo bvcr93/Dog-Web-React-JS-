@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import "../styles/Dog.css";
 
 
-const Dog = ({ img, breed, origin  }) => {
+const Dog = ({ img, breed, origin , id }) => {
   return (
     <div className="dog-container">
       
@@ -12,7 +12,7 @@ const Dog = ({ img, breed, origin  }) => {
         <h3> {breed}</h3>
         <p> {origin}</p>
        
-        <Link to = "/details" >
+        <Link to = {`/details/${id}/${img}/${breed}`} >
         <button className="adopt-btn">READ MORE</button>
         </Link>
       </div>

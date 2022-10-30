@@ -53,7 +53,7 @@ const Shop = () => {
     <div className="shop-header">
       {dogs
         .map((dog, key) => (
-          <Dog key={key} origin={dog.origin} img={dog.img} breed={dog.breed} />
+          <Dog id= {key} key={key} origin={dog.origin} img={dog.img} breed={dog.breed} />
         ))
         .slice(20, 25, dogs.length)}
 

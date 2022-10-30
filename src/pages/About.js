@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/About.css";
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
+import {withRouter} from "react-router-dom"
 
 const About = () => {
   return (

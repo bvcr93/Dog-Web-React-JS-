@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import "../styles/Details.css"
 
-const Details = ({}) => {
+const Details = () => {
+  const  {id} = useParams()
 
   const [details, setDetails] = useState([])
 
@@ -16,13 +18,22 @@ useEffect(()=> {
   
   fetch('https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/Cretan%20Hound', options)
     .then(response => response.json())
+    
     .then(response => setDetails(response))
     .catch(err => console.error(err));
 },[])
 
   return (
-    <div className='details'>{details.map ((detail,key) => (
-      <li key={key}>{detail.breed}</li>
+    <div className='details'>
+      <h3>dog details {id}</h3>
+      
+      
+      {details.map ((detail,key) => (
+      <div key={key}>{detail.breed}
+      <img src={detail.img}  />
+      </div>
+
+
     ))}</div>
   )
 }
