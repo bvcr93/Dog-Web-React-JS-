@@ -6,6 +6,7 @@ const Details = () => {
   const { id } = useParams();
 
   const [details, setDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
 
   useEffect(() => {
@@ -21,14 +22,28 @@ const Details = () => {
       "https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/Cretan%20Hound",
       options
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw Error("could not fetch the data");
+        }
+       return response.json()
+       
+      })
 
-      .then((response) => setDetails(response))
-      .catch((err) => console.error(err));
+      .then((response) => {
+        setDetails(response)
+        setLoading(false)
+      })
+      .catch((err) => {
+        setErr(err.message)
+        
+      });
   }, []);
 
   return (
     <div className="details">
+       {err && <h2>{err}</h2>}
+      
       <h3>dog details {id}</h3>
 
       {details.map((detail, key) => (
@@ -37,6 +52,7 @@ const Details = () => {
           <img src={detail.img} />
         </div>
       ))}
+       {loading ? <div className="loader"></div> : null}
     </div>
   );
 };
