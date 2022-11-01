@@ -17,37 +17,37 @@ const Nav = () => {
   }, [location]);
   return (
     <div
-      className="flex justify-center items-center h-24 sticky top-0 z-0 bg-indigo-100 " // CSS classname: navbar
+      className="flex justify-center items-center h-24 sticky top-0 z-0 bg-indigo-100 shadow-lg shadow-indigo-300/40" // CSS classname: navbar
       id={expandNav ? "open" : "close"}
     >
-      <div className="flex flex-1 ml-5  "> 
-        <FacebookIcon />
-        <LinkedInIcon />
-        <TwitterIcon />
+      <div className="flex flex-1 ml-6  "> 
+        <FacebookIcon style={{fontSize: "35px" , marginRight: "10px" , color: "#555555" }} />
+        <LinkedInIcon style={{fontSize: "35px", marginRight: "10px", color: "#555555"}}/>
+        <TwitterIcon style={{fontSize: "35px", marginRight: "10px" ,color: "#555555"}}/>
       </div>
-      <div className="center-nav links">
-        <Link to="/about">ABOUT</Link>
-        <Link to="/contact">CONTACT</Link>
-        <Link to="/shop">SHOP</Link>
+      <div className="flex-4 hidden md:flex justify-center text-2xl text-slate-600">
+        <Link className="p-5  hover: bg-transparent hover:text-indigo-400 rounded-md" to="/about">ABOUT</Link>
+        <Link className="p-5  hover: bg-transparent hover:text-indigo-400 rounded-md" to="/contact">CONTACT</Link>
+        <Link className="p-5  hover: bg-transparent hover:text-indigo-400 rounded-md" to="/shop">SHOP</Link>
       </div>
-      <div className="right-nav">
+      <div className="flex-1 flex items-center justify-center">
         <button className="person-icon">
-          <PersonIcon />
+          <PersonIcon style={{fontSize: "35px" , marginRight: "10px" , color: "#555555" }} />
         </button>
         <Link to="/login">
           <button className="login-btn" onClick={() => setIsAuth(false)}>
             {/* <Navigate to = "/login"/> */}
-            <LoginIcon />
+            <LoginIcon style={{fontSize: "35px" , marginRight: "10px" , color: "#555555" }}  />
           </button>
         </Link>
         <Link to="/checkout"></Link>
 
         <button
-          className="reorder-icon"
+          className="reorder-icon md:hidden"
           onClick={() => setExpandNav((prev) => !prev)}
         >
-          <ReorderIcon />
-        </button>
+          <ReorderIcon style={{fontSize: "35px" , marginRight: "10px" , color: "#555555" }} />
+        </button> 
       </div>
     </div>
   );
