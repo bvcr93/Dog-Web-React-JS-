@@ -16,8 +16,11 @@ const Nav = () => {
     setExpandNav(false);
   }, [location]);
   return (
-    <div className="navbar" id={expandNav ? "open" : "close"}>
-      <div className="left-nav">
+    <div
+      className="flex justify-center items-center h-24 sticky top-0 z-0 bg-indigo-100 " // CSS classname: navbar
+      id={expandNav ? "open" : "close"}
+    >
+      <div className="flex flex-1 ml-5  "> 
         <FacebookIcon />
         <LinkedInIcon />
         <TwitterIcon />

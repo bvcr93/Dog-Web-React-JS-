@@ -10,6 +10,7 @@ const Details = () => {
   const [err, setErr] = useState(null);
 
   useEffect(() => {
+    
     const options = {
       method: "GET",
       headers: {
@@ -26,24 +27,22 @@ const Details = () => {
         if (!response.ok) {
           throw Error("could not fetch the data");
         }
-       return response.json()
-       
+        return response.json();
       })
 
       .then((response) => {
-        setDetails(response)
-        setLoading(false)
+        setDetails(response);
+        setLoading(false);
       })
       .catch((err) => {
-        setErr(err.message)
-        
+        setErr(err.message);
       });
   }, []);
 
   return (
     <div className="details">
-       {err && <h2>{err}</h2>}
-      
+      {err && <h2>{err}</h2>}
+
       <h3>dog details {id}</h3>
 
       {details.map((detail, key) => (
@@ -52,7 +51,7 @@ const Details = () => {
           <img src={detail.img} />
         </div>
       ))}
-       {loading ? <div className="loader"></div> : null}
+      {loading ? <div className="loader"></div> : null}
     </div>
   );
 };
