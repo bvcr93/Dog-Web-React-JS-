@@ -18,14 +18,8 @@ const Nav = () => {
     setNav(false);
   }, [location]);
   return (
-    <div>
-      <div
-        className=" 
-        flex justify-center  h-[80px] items-center  sticky 
-        top-0 z-10 bg-indigo-100 shadow-lg
-         shadow-indigo-300/40" 
-        
-      >
+    <div className="sticky top-0 z-10">
+      <div className=" flex justify-center h-[80px] items-center  bg-indigo-100 shadow-lg shadow-indigo-300/40">
         <div className="flex flex-1 ml-6  ">
           <FacebookIcon
             style={{ fontSize: "35px", marginRight: "10px", color: "#555555" }}
@@ -57,7 +51,7 @@ const Nav = () => {
             SHOP
           </Link>
         </div>
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-end mr-5">
           <button className="person-icon hidden md:flex">
             <PersonIcon
               style={{
@@ -89,12 +83,23 @@ const Nav = () => {
           </button>
         </div>
       </div>
-      <ul className={!nav ? "hidden" : "absolute bg-indigo-100 w-full px-6"}>
+      <ul
+        className={
+          !nav
+            ? "hidden"
+            : "absolute bg-indigo-100 w-full px-6 py-4 text-center"
+        }
+      >
         <Link to="/about">
-          <li className="border-b-2 border-blue-300 w-full">About</li>
+          <li className="border-b-2 border-blue-300 w-full py-3">ABOUT</li>
         </Link>
-        <li className="border-b-2 border-blue-300 w-full">Contact</li>
-        <li className="border-b-2 border-blue-300 w-full">Shop</li>
+        <Link to="/contact">
+          <li className="border-b-2 border-blue-300 w-full py-3">CONTACT</li>
+        </Link>
+
+        <Link to="/shop">
+          <li className="border-b-2 border-blue-300 w-full py-3">SHOP</li>
+        </Link>
       </ul>
     </div>
   );
