@@ -3,8 +3,8 @@ import "../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <h2>&copy; 2022 bvcr@.com</h2>
+    <div className="h-[50px] bg-indigo-100 flex justify-center items-center">
+      <h2 className="text-2xl text-slate-700">&copy; 2022 bvcr@.com</h2>
     </div>
   );
 };

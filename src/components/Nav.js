@@ -91,14 +91,14 @@ const Nav = () => {
         }
       >
         <Link to="/about">
-          <li className="border-b-2 border-blue-300 w-full py-3">ABOUT</li>
+          <li className="border-b-2 border-blue-300 w-full py-3 hover: bg-transparent hover:text-indigo-400 rounded-md">ABOUT</li>
         </Link>
         <Link to="/contact">
-          <li className="border-b-2 border-blue-300 w-full py-3">CONTACT</li>
+          <li className="border-b-2 border-blue-300 w-full py-3 hover: bg-transparent hover:text-indigo-400 rounded-md">CONTACT</li>
         </Link>
 
         <Link to="/shop">
-          <li className="border-b-2 border-blue-300 w-full py-3">SHOP</li>
+          <li className="border-b-2 border-blue-300 w-full py-3 hover: bg-transparent hover:text-indigo-400 rounded-md">SHOP</li>
         </Link>
       </ul>
     </div>
