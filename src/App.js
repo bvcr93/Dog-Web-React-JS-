@@ -12,15 +12,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContext, UserProvider } from "./components/UserContext";
 
 const App = () => {
-
-  const [showNav, setShowNav] = useState(false)
-  const [showFooter, setShowFooter] = useState(false)
+  const [showNav, setShowNav] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
 
   return (
     <UserProvider>
       <BrowserRouter>
-      {showNav && <Nav/> }
-         
+        {showNav && <Nav />}
 
         <Routes>
           <Route element={<ProtectedRoute />}>
@@ -35,12 +33,16 @@ const App = () => {
 
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login setShowNav = {setShowNav} setShowFooter = {setShowFooter}/>} />
+          <Route
+            path="/login"
+            element={
+              <Login setShowNav={setShowNav} setShowFooter={setShowFooter} />
+            }
+          />
 
           <Route path="/details/:id/*" element={<Details />} />
         </Routes>
-        {showFooter && <Footer /> }
-      
+        {showFooter && <Footer />}
       </BrowserRouter>
     </UserProvider>
   );

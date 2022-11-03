@@ -1,69 +1,96 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../styles/Login.css";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const schema = yup.object().shape({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(4).max(15).required(),
-  confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
-});
-
 const Login = ({ setShowNav, setShowFooter }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
   const { setIsAuth, isAuth } = useContext(UserContext);
-  const submitForm = (data) => {
-    console.log(data);
+
+  const initValues = { username: "", email: "", password: "" };
+  const [formValues, setFormValues] = useState(initValues);
+  const [err, setErr] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+
+    // console.log(formValues);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErr(validate(formValues));
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    console.log(err);
+    if (Object.keys(err).length === 0 && isSubmit) {
+      // console.log(formValues);
+    }
+  }, [err]);
+
+  const validate = (values) => {
+    const err = {}
+    const regex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!values.username) {
+      err.username = "Username is required";
+    }
+    if (!values.email) {
+      err.email = "Email is required";
+    } else if (!regex.test(values.email)) {
+      err.email = "This is not valid email!";
+    }
+    if (!values.password) {
+      err.password = "Password is required";
+    } else if (values.password.length < 4) {
+      err.password = "Password must contain more than 4 characters";
+    } else if (values.password.length > 10) {
+      err.password = "Password cannot exceed 10 characters";
+    }
+    return err;
+  };
+
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit(submitForm)} className="sign-in">
+      {Object.keys(err).length === 0 && isSubmit
+        ? setTimeout(() => {
+            setIsAuth(true);
+          }, 2000)
+        : null}
+      
+      <form onSubmit={handleSubmit} className="sign-in">
         <input
-          {...register("firstName", { required: true, maxLength: 20 })}
+          onChange={handleChange}
           type="text"
           placeholder="First Name..."
-          name="firstName"
+          name="username"
+          defaultValue={formValues.username}
         />
-        <p className="text-red-500"> {errors.firstName?.message}</p>
-
+        <p className="text-red-600">{err.username}</p>
         <input
-          {...register("lastName", { required: true, maxLength: 20 })}
-          type="text"
-          placeholder="Last Name..."
-          name="lastName"
+          onChange={handleChange}
+          type="email"
+          placeholder="Email..."
+          name="email"
+          defaultValue={formValues.email}
         />
-<p className="text-red-500"> {errors.lastName?.message}</p>
-        <input 
-         {...register("mail", { required: "Email Address is required" })} 
-         aria-invalid={errors.mail ? "true" : "false"}
-        type="text" placeholder="Email..."  name="email" />
-        <p className="text-red-500"> {errors.email?.message}</p>
-        
-        <input type="text" placeholder="Password..." required name="password" />
-
+        <p className="text-red-600">{err.email}</p>
         <input
-          type="text"
-          placeholder="Confirm Password..."
-          name="confirmPassword"
+          onChange={handleChange}
+          type="password"
+          placeholder="Password..."
+          name="password"
+          defaultValue={formValues.password}
         />
-
-        <input type="submit" onSubmit={() => setIsAuth(true)} />
+        <p className="text-red-600">{err.password}</p>
         <button
-          type="submit"
           className="sign-in-btn"
-          onClick={() => setIsAuth(true)}
+          // onClick={() => setIsAuth(true)}
         >
           {isAuth && <Navigate to="/" />}
           {isAuth ? setShowNav(true) : setShowNav(false)}
