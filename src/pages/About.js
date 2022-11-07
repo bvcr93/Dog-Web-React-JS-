@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 
 const About = () => {
   return (
-    <div className="about-header">
+    <div className="about-header bg-[url('https://www.creativefabrica.com/wp-content/uploads/2020/07/15/Watercolor-Background-Texture-Pink-Graphics-4632195-2-580x386.jpg')]">
       <div className="header-titles">
         <span className="sm">Adopt</span>
         <span className="lg">Me</span>

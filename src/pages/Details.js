@@ -20,7 +20,7 @@ const Details = () => {
     };
 
     fetch(
-      "https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/Cretan%20Hound",
+      "https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/Aidi" ,
       options
     )
       .then((response) => {
@@ -43,12 +43,13 @@ const Details = () => {
     <div className="details">
       {err && <h2>{err}</h2>}
 
-      <h3>dog details {id}</h3>
+      <h3>dog details  {id}</h3>
 
       {details.map((detail, key) => (
         <div key={key}>
           {detail.breed}
           <img src={detail.img} />
+          <p>{detail.meta.coat}</p>
         </div>
       ))}
       {loading ? <div className="loader"></div> : null}
