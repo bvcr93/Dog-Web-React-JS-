@@ -10,7 +10,7 @@ export function UserProvider(props) {
 
   const initValues = { username: "darel", email: "", password: "" };
   const [formValues, setFormValues] = useState(initValues);
-  const [err, setErr] = useState({});
+  const [err, setErr] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   // const [user, setUser] = useState({name: "", email: ""})
 
@@ -24,7 +24,7 @@ const Logout = () => {
 }
 
 const adminUser = {
-  name: "Darel",
+  name: "darel",
   email:"darelbavcar1@gmail.com",
   password: "123"
  
