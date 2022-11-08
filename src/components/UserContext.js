@@ -24,7 +24,7 @@ const Logout = () => {
 }
 
 const adminUser = {
-  name: "darel",
+  name: "",
   email:"darelbavcar1@gmail.com",
   password: "123"
  

@@ -6,6 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import LoginIcon from "@mui/icons-material/Login";
 import { UserContext } from "./UserContext";
+import {auth} from "../config/firebase"
 
 const Nav = () => {
   const { setIsAuth,setUser, user , Login, adminUser} = useContext(UserContext);
@@ -53,7 +54,9 @@ const Nav = () => {
           </Link>
         </div>
         <div className="flex-1 flex items-center justify-end mr-5">
-          <button className="person-icon hidden md:flex flex-col">
+          <button className="person-icon hidden md:flex items-center ">
+            
+            <p className="text-blue-500">{auth.currentUser.displayName}</p>
             <PersonIcon
               style={{
                 fontSize: "35px",
