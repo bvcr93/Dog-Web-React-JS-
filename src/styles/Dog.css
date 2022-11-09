@@ -1,4 +1,4 @@
-.dog-cart {
+/* .dog-cart {
   background-color: rgb(27, 38, 79);
   width: 300px;
   display: flex;
@@ -48,4 +48,14 @@
  .adopt-btn {
   display: flex;
  }
+} */
+@media only screen and (max-width: 700px) {
+  .dog-container{
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 1700px) {
+  .dog-container {
+    height: 400px;
+  }
 }

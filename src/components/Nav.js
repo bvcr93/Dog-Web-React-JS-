@@ -31,7 +31,9 @@ const Nav = () => {
     <div className="sticky top-0 z-10">
       <div className=" flex justify-center h-[80px] items-center  bg-indigo-100 shadow-lg shadow-indigo-300/40">
         <div className="flex flex-1 ml-6  ">
-          <h1 className="text-3xl text-slate-700">Adopt Me</h1>
+          <Link to ="/">
+          <button className="text-3xl text-slate-700">Adopt Me</button>
+          </Link>
         </div>
         <div className="flex-4 hidden md:flex justify-center text-2xl text-slate-600">
           <Link
