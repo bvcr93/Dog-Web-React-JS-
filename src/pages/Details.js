@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Details.css";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Details = () => {
   const { id } = useParams();
-
+const navigate = useNavigate()
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
 
   useEffect(() => {
-    
     const options = {
       method: "GET",
       headers: {
@@ -19,10 +19,7 @@ const Details = () => {
       },
     };
 
-    fetch(
-      "https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/Aidi" ,
-      options
-    )
+    fetch(`https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${id}`, options)
       .then((response) => {
         if (!response.ok) {
           throw Error("could not fetch the data");
@@ -43,16 +40,32 @@ const Details = () => {
     <div className="details">
       {err && <h2>{err}</h2>}
 
-      <h3>dog details  {id}</h3>
-
       {details.map((detail, key) => (
-        <div key={key}>
+        <div
+          className="max-w-sm rounded overflow-hidden shadow-lg flex flex-col items-center justify-center h-[400px]"
+          key={key}
+        >
           {detail.breed}
           <img src={detail.img} />
-          <p>{detail.meta.coat}</p>
+          <p>Coat: {detail.meta.coat}</p>
+          <p>Height: {detail.meta.height}</p>
+          <p>Weight: {detail.meta.weight}</p>
+          <p>Origin: {detail.origin}</p>
+          
+          <button onClick={()=> navigate("/shop")} className ="mt-12">
+          <ArrowBackIcon/>
+          </button>
+          
+      
+
+
         </div>
       ))}
       {loading ? <div className="loader"></div> : null}
+      
+     
+     
+
     </div>
   );
 };

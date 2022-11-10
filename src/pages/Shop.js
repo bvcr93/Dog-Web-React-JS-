@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/Shop.css";
-import axios from "axios";
+
 import { useEffect } from "react";
 import { useState } from "react";
 import Dog from "./Dog";
-import { Pagination } from "@mui/material";
+
 import ReactPaginate from "react-paginate";
 
 const Shop = () => {
@@ -12,6 +12,7 @@ const Shop = () => {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState();
   const [pageNum, setPageNum] = useState(0);
+  const [query, setQuery] = useState("");
   // useEffect(() => {
   //   const options = {
   //     method: "GET",
@@ -32,7 +33,7 @@ const Shop = () => {
   //       console.error(error);
   //     });
   // }, []);
-
+ 
   useEffect(() => {
     const options = {
       method: "GET",
@@ -66,6 +67,7 @@ const Shop = () => {
   const pagesVisited = pageNum * dogsPerPage;
 
   const displayDogs = dogs
+  .filter(dog => dog.breed.toLowerCase().includes(query))
     .slice(pagesVisited, pagesVisited + dogsPerPage)
     .map((dog, key) => {
       return (
@@ -76,24 +78,25 @@ const Shop = () => {
           img={dog.img}
           breed={dog.breed}
         />
-      );
+      )
+    
     });
 
   const pageCount = Math.ceil(dogs.length / dogsPerPage);
   const changePage = ({ selected }) => {
     setPageNum(selected);
   };
+
   return (
-    <div className=" bg-gray-100  w-full ">
-     
+    <div className=" bg-gray-100  w-full flex flex-col ">
+      <input className="w-[300px] m-auto mt-10 p-2"
+        type="text"
+        placeholder="Search for dog..."
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      
       <div className=" shop-header flex h-[80vh] justify-center items-center grid-cols-1">
         {displayDogs}
-
-        {/* <Pagination  
-          count={pageCount}
-          onChange={changePage}
-          page= {pageNum}
-          defaultPage= {pageNum}/> */}
 
         {err && <h2>{err}</h2>}
         {loading ? <div className="loader"></div> : null}

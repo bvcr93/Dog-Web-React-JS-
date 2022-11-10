@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
@@ -9,7 +9,7 @@ import Shop from "./pages/Shop";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { UserContext, UserProvider } from "./components/UserContext";
+import { UserProvider } from "./components/UserContext";
 
 const App = () => {
   const [showNav, setShowNav] = useState(false);
@@ -19,8 +19,9 @@ const App = () => {
     <UserProvider>
       <BrowserRouter>
         {showNav && <Nav />}
-
+       
         <Routes>
+       
           <Route element={<ProtectedRoute />}>
             <Route element={<About />} path="/about" />
           </Route>
@@ -30,7 +31,6 @@ const App = () => {
           <Route element={<ProtectedRoute />}>
             <Route element={<Landing />} path="/" />
           </Route>
-
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
           <Route

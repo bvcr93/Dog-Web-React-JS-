@@ -12,7 +12,7 @@ const Dog = ({ img, breed, origin, id }) => {
         <h3 className="text-blue-500 text-lg my-3 font-bold"> {breed}</h3>
         <p className="  font-sans text-md text-gray-800 text-center"> {origin}</p>
 
-        <Link to={`/details/${id}`}>
+        <Link to={`/details/${breed}`}>
           <button className="adopt-btn bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-5">READ MORE</button>
         </Link>
         </div>

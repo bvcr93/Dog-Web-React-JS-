@@ -36,8 +36,11 @@ const adminUser = {
   //   console.log(value);
   // };
 
+  // useEffect(() => {
+  //   localStorage.setItem("authorized", JSON.stringify(isAuth));
+  // }, [isAuth]);
   useEffect(() => {
-    localStorage.setItem("authorized", JSON.stringify(isAuth));
+    if(isAuth){localStorage.setItem("authorized", JSON.stringify(isAuth))}
   }, [isAuth]);
 
   return (

@@ -1,35 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/Login.css";
 import { UserContext } from "../components/UserContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 import { auth, provider } from "../config/firebase";
 import { signInWithPopup } from "firebase/auth";
+import Input from "../components/Input";
 
 const Login = ({ setShowNav, setShowFooter }) => {
-  const {
-    user,
-    setUser,
-    adminUser,
-    Login,
-    Logout,
-    setIsAuth,
-    isAuth,
-    err,
-    setErr,
-  } = useContext(UserContext);
+  const {adminUser, Login,setIsAuth,isAuth,err,setErr} = useContext(UserContext);
 
-  const navigate = useNavigate();
+
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
 
     console.log(result);
-    setIsAuth(true)
-    
-
+    setIsAuth(true);
   };
-  
 
-  // const initValues = { username: "", email: "", password: "" };
+
   // const [formValues, setFormValues] = useState(initValues);
   // const [err, setErr] = useState({});
   // const [isSubmit, setIsSubmit] = useState(false);
@@ -78,8 +66,11 @@ const Login = ({ setShowNav, setShowFooter }) => {
 
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
+
   const submitHandler = (e) => {
     e.preventDefault();
+
+    
     Login(details);
     if (
       details.email === adminUser.email &&
@@ -87,7 +78,6 @@ const Login = ({ setShowNav, setShowFooter }) => {
       details.name === adminUser.name
     ) {
       setIsAuth(true);
-      setUser({ name: details.name, email: details.email });
     } else {
       console.log("not logged in");
       setErr("Details do not match!");
@@ -95,49 +85,6 @@ const Login = ({ setShowNav, setShowFooter }) => {
   };
 
   return (
-    // <div className="login-container">
-    //   {Object.keys(err).length === 0 && isSubmit
-    //     ? setIsAuth(true)
-    //     : null}
-
-    //   <form onSubmit={handleSubmit} className="sign-in">
-    //     <input
-    //       onChange={handleChange}
-    //       type="text"
-    //       placeholder="First Name..."
-    //       name="username"
-    //       defaultValue={formValues.username}
-    //     />
-    //     <p className="text-red-600">{err.username}</p>
-    //     <input
-    //       onChange={handleChange}
-    //       type="email"
-    //       placeholder="Email..."
-    //       name="email"
-    //       defaultValue={formValues.email}
-    //     />
-    //     <p className="text-red-600">{err.email}</p>
-    //     <input
-    //       onChange={handleChange}
-    //       type="password"
-    //       placeholder="Password..."
-    //       name="password"
-    //       defaultValue={formValues.password}
-    //     />
-    //     <p className="text-red-600">{err.password}</p>
-    //     <button
-    //       className="sign-in-btn"
-    //       // onClick={() => setIsAuth(true)}
-    //     >
-    //       {isAuth && <Navigate to="/" />}
-    //       {isAuth ? setShowNav(true) : setShowNav(false)}
-    //       {isAuth ? setShowFooter(true) : setShowFooter(false)}
-    //       Sign in
-    //     </button>
-    //   </form>
-    // </div>
-
-    // ANOTHER LOGIN FORM
     <div className="bg-indigo-700">
       <form
         onSubmit={submitHandler}
