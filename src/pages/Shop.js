@@ -3,7 +3,7 @@ import "../styles/Shop.css";
 
 import { useEffect } from "react";
 import { useState } from "react";
-import Dog from "./Dog";
+import Dog from "../components/Dog";
 
 import ReactPaginate from "react-paginate";
 
@@ -33,17 +33,17 @@ const Shop = () => {
   //       console.error(error);
   //     });
   // }, []);
- 
+
   useEffect(() => {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d",
-        "X-RapidAPI-Host": "dog-breeds2.p.rapidapi.com",
+        'X-RapidAPI-Key': '6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d',
+        'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
       },
     };
 
-    fetch("https://dog-breeds2.p.rapidapi.com/dog_breeds", options)
+    fetch('https://dog-breeds2.p.rapidapi.com/dog_breeds', options)
       .then((response) => {
         if (!response.ok) {
           throw Error("could not fetch the data");
@@ -67,7 +67,7 @@ const Shop = () => {
   const pagesVisited = pageNum * dogsPerPage;
 
   const displayDogs = dogs
-  .filter(dog => dog.breed.toLowerCase().includes(query))
+    .filter((dog) => dog.breed.toLowerCase().includes(query))
     .slice(pagesVisited, pagesVisited + dogsPerPage)
     .map((dog, key) => {
       return (
@@ -75,11 +75,10 @@ const Shop = () => {
           id={key}
           key={key}
           origin={dog.origin}
-          img={dog.img}
+          img ={dog.img}
           breed={dog.breed}
         />
-      )
-    
+      );
     });
 
   const pageCount = Math.ceil(dogs.length / dogsPerPage);
@@ -89,12 +88,13 @@ const Shop = () => {
 
   return (
     <div className=" bg-gray-100  w-full flex flex-col ">
-      <input className="w-[300px] m-auto mt-10 p-2"
+      <input
+        className="w-[300px] m-auto mt-10 p-2"
         type="text"
         placeholder="Search for dog..."
         onChange={(e) => setQuery(e.target.value)}
       />
-      
+
       <div className=" shop-header flex h-[80vh] justify-center items-center grid-cols-1">
         {displayDogs}
 

@@ -85,8 +85,8 @@ const Login = ({ setShowNav, setShowFooter }) => {
   };
 
   return (
-    <div className="bg-indigo-700">
-      <form
+    <div className="">
+      {/* <form
         onSubmit={submitHandler}
         className="flex flex-col m-auto w-[70%] items-center justify-center h-screen bg-indigo-400 "
       >
@@ -140,7 +140,7 @@ const Login = ({ setShowNav, setShowFooter }) => {
         {isAuth && <Navigate to="/" />}
         {isAuth ? setShowNav(true) : setShowNav(false)}
         {isAuth ? setShowFooter(true) : setShowFooter(false)}
-      </form>
+      </form> */}
     </div>
   );
 };

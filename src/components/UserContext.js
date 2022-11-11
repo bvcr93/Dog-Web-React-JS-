@@ -17,6 +17,8 @@ export function UserProvider(props) {
 
 const Login = (details) => {
   console.log(details)
+
+  
 }
 
 const Logout = () => {

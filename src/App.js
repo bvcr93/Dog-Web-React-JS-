@@ -1,5 +1,5 @@
 import React, {  useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import About from "./pages/About";
@@ -10,6 +10,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserProvider } from "./components/UserContext";
+import LoginForm from "./pages/LoginForm";
 
 const App = () => {
   const [showNav, setShowNav] = useState(false);
@@ -33,12 +34,13 @@ const App = () => {
           </Route>
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
-          <Route
+          {/* <Route
             path="/login"
             element={
               <Login setShowNav={setShowNav} setShowFooter={setShowFooter} />
             }
-          />
+          /> */}
+          <Route path="/login" element = {<LoginForm setShowNav={setShowNav} setShowFooter={setShowFooter}/>}/>
 
           <Route path="/details/:id/*" element={<Details />} />
         </Routes>

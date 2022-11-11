@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Details.css";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Details = () => {
   const { id } = useParams();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
@@ -51,21 +51,13 @@ const navigate = useNavigate()
           <p>Height: {detail.meta.height}</p>
           <p>Weight: {detail.meta.weight}</p>
           <p>Origin: {detail.origin}</p>
-          
-          <button onClick={()=> navigate("/shop")} className ="mt-12">
-          <ArrowBackIcon/>
+
+          <button onClick={() => navigate("/shop")} className="mt-12">
+            <ArrowBackIcon />
           </button>
-          
-      
-
-
         </div>
       ))}
       {loading ? <div className="loader"></div> : null}
-      
-     
-     
-
     </div>
   );
 };

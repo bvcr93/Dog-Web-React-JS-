@@ -6,10 +6,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import LoginIcon from "@mui/icons-material/Login";
 import { UserContext } from "./UserContext";
-import {auth} from "../config/firebase"
+import { auth } from "../config/firebase";
 
 const Nav = () => {
-  const { setIsAuth,setUser, user , Login, adminUser} = useContext(UserContext);
+  const { setIsAuth, setUser, user, Login, adminUser } =
+    useContext(UserContext);
 
   const [nav, setNav] = useState(false);
   const location = useLocation();
@@ -24,15 +25,12 @@ const Nav = () => {
     setIsAuth(false);
   };
 
-
-
-  
   return (
     <div className="sticky top-0 z-10">
       <div className=" flex justify-center h-[80px] items-center  bg-indigo-100 shadow-lg shadow-indigo-300/40">
         <div className="flex flex-1 ml-6  ">
-          <Link to ="/">
-          <button className="text-3xl text-slate-700">Adopt Me</button>
+          <Link to="/">
+            <button className="text-3xl text-slate-700">Adopt Me</button>
           </Link>
         </div>
         <div className="flex-4 hidden md:flex justify-center text-2xl text-slate-600">
@@ -57,7 +55,6 @@ const Nav = () => {
         </div>
         <div className="flex-1 flex items-center justify-end mr-5">
           <button className="person-icon hidden md:flex items-center ">
-            
             <p className="text-blue-500">{auth.currentUser.displayName}</p>
             <PersonIcon
               style={{
@@ -66,7 +63,7 @@ const Nav = () => {
                 color: "#555555",
               }}
             />
-           {adminUser.name}
+            {adminUser.name}
           </button>
           <Link to="/login">
             <button className="login-btn " onClick={handleLogout}>
