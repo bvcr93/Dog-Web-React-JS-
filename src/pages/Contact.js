@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Contact.css";
+
 const Contact = () => {
   return (
     <section className="bg-white dark:bg-gray-900 h-screen">

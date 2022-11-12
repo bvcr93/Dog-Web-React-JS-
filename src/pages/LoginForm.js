@@ -1,7 +1,14 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
+import { auth, provider } from "../config/firebase";
+import { signInWithPopup } from "firebase/auth";
 const LoginForm = ({ setShowNav, setShowFooter }) => {
+ 
+const signInWithGoogle = async () => {
+const result = await signInWithPopup(auth, provider)
+setIsAuth(true)
+}
   const { adminUser, Login, setIsAuth, isAuth, err, setErr } =
     useContext(UserContext);
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
@@ -23,7 +30,6 @@ const LoginForm = ({ setShowNav, setShowFooter }) => {
   };
 
   isAuth ? setShowNav(true) : setShowNav(false);
-
   isAuth ? setShowFooter(true) : setShowFooter(false);
 
   return (
@@ -56,6 +62,7 @@ const LoginForm = ({ setShowNav, setShowFooter }) => {
                   placeholder="First name..."
                   required=""
                 />
+                <p className="text-red-500">{err}</p>
               </div>
               <div>
                 <label
@@ -74,6 +81,7 @@ const LoginForm = ({ setShowNav, setShowFooter }) => {
                   placeholder="name@company.com"
                   required=""
                 />
+                <p className="text-red-500">{err}</p>
               </div>
               <div>
                 <label
@@ -95,7 +103,7 @@ const LoginForm = ({ setShowNav, setShowFooter }) => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-start">
-                  <div className="flex items-center h-5">
+                  <div className="flex items-center h-5 ">
                     <input
                       id="remember"
                       aria-describedby="remember"
@@ -119,11 +127,20 @@ const LoginForm = ({ setShowNav, setShowFooter }) => {
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full text-white bg-primary-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Sign in
               </button>
-              <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+
+              <button
+            onClick={signInWithGoogle}
+                type="submit"
+                className="w-full text-white bg-primary-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Sign in with Google
+              </button>
+
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don't have an account yet?{" "}
                 <p className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                   Sign up

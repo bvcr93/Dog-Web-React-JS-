@@ -37,7 +37,7 @@ const Details = () => {
   }, []);
 
   return (
-    <div className="details">
+    <div className="details h-[90vh] flex items-center justify-center">
       {err && <h2>{err}</h2>}
 
       {details.map((detail, key) => (
@@ -45,14 +45,16 @@ const Details = () => {
           className="max-w-sm rounded overflow-hidden shadow-lg flex flex-col items-center justify-center h-[400px]"
           key={key}
         >
-          {detail.breed}
-          <img src={detail.img} />
-          <p>Coat: {detail.meta.coat}</p>
-          <p>Height: {detail.meta.height}</p>
-          <p>Weight: {detail.meta.weight}</p>
-          <p>Origin: {detail.origin}</p>
-
-          <button onClick={() => navigate("/shop")} className="mt-12">
+          <p className="mb-4 text-blue-500 font-bold">  {detail.breed}</p>
+        
+          <img   src={detail.img} />
+          <div className="flex flex-col items-center justify-center mt-3">
+          <p className="mb-4 ">Coat: {detail.meta.coat}</p>
+          <p className="mb-4 ">Height: {detail.meta.height}</p>
+          <p className="mb-4 ">Weight: {detail.meta.weight}</p>
+          <p className="mb-4 ">Origin: {detail.origin}</p>
+          </div>
+          <button onClick={() => navigate("/shop")} className="mb-2">
             <ArrowBackIcon />
           </button>
         </div>

@@ -1,10 +1,10 @@
-.details {
+/* .details {
     height: 90vh;
     background-color: rgb(240, 240, 240);
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
