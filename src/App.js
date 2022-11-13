@@ -10,6 +10,7 @@ import Landing from "./pages/Landing";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserProvider } from "./components/UserContext";
 import LoginForm from "./pages/LoginForm";
+import SharedLayout from "./components/SharedLayout";
 
 const App = () => {
   const [showNav, setShowNav] = useState(false);
@@ -18,24 +19,18 @@ const App = () => {
   return (
     <UserProvider>
       <BrowserRouter>
-      {showNav && <Nav/>}
-
-        <Routes> 
-           
-          {/* <Route index element= { <Nav />}/> */}
-
+        <Routes>
           <Route element={<ProtectedRoute />}>
-            <Route element={<About />} path="/about" />
-          </Route>
-          <Route element={<ProtectedRoute />}>
-            <Route element={<Details />} path="/details/:id/*" />
-          </Route>
-          <Route element={<ProtectedRoute />}>
-            <Route element={<Landing />} path="/" />
-          </Route>
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/contact" element={<Contact />} />
+            <Route element={<SharedLayout />} path="/">
+              <Route index element={<Landing />} />
+              <Route element={<About />} path="/about" />
 
+              <Route element={<Details />} path="/details/:id/*" />
+
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/contact" element={<Contact />} />
+            </Route>
+          </Route>
           <Route
             path="/login"
             element={
@@ -45,10 +40,7 @@ const App = () => {
               />
             }
           />
-
-          <Route path="/details/:id/*" element={<Details />} />
         </Routes>
-        {showFooter && <Footer />}
       </BrowserRouter>
     </UserProvider>
   );

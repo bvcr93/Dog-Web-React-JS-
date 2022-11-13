@@ -6,31 +6,25 @@ export function UserProvider(props) {
   const [showNav, setShowNav] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
 
- 
-
   const initValues = { username: "darel", email: "", password: "" };
   const [formValues, setFormValues] = useState(initValues);
   const [err, setErr] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   // const [user, setUser] = useState({name: "", email: ""})
 
+  const Login = (details) => {
+    console.log(details);
+  };
 
-const Login = (details) => {
-  console.log(details)
+  const Logout = () => {
+    console.log("logout");
+  };
 
-  
-}
-
-const Logout = () => {
-  console.log("logout")
-}
-
-const adminUser = {
-  name: "",
-  email:"darelbavcar1@gmail.com",
-  password: "123"
- 
-}
+  const adminUser = {
+    name: "",
+    email: "darelbavcar1@gmail.com",
+    password: "123",
+  };
 
   // const handleChange = (e) => {
   //   const { name, value } = e.target;
@@ -42,7 +36,9 @@ const adminUser = {
   //   localStorage.setItem("authorized", JSON.stringify(isAuth));
   // }, [isAuth]);
   useEffect(() => {
-    if(isAuth){localStorage.setItem("authorized", JSON.stringify(isAuth))}
+    if (isAuth) {
+      localStorage.setItem("authorized", JSON.stringify(isAuth));
+    }
   }, [isAuth]);
 
   return (
@@ -60,10 +56,10 @@ const adminUser = {
         isSubmit,
         setIsSubmit,
         setFormValues,
-      
+
         Login,
         Logout,
-        adminUser
+        adminUser,
       }}
     >
       {props.children}
