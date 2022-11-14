@@ -3,34 +3,18 @@ import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
 import { auth, provider } from "../config/firebase";
 import { signInWithPopup } from "firebase/auth";
-const LoginForm = ({ setShowNav, setShowFooter }) => {
- 
-const signInWithGoogle = async () => {
-const result = await signInWithPopup(auth, provider)
-setIsAuth(true)
-}
-  const { adminUser, Login, setIsAuth, isAuth, err, setErr } =
-    useContext(UserContext);
+const LoginForm = () => {
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+    setIsAuth(true);
+  };
+  const { login, setIsAuth, isAuth, err } = useContext(UserContext);
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    Login(details);
-    if (
-      details.email === adminUser.email &&
-      details.password === adminUser.password &&
-      details.name === adminUser.name
-    ) {
-      setIsAuth(true);
-    } else {
-      console.log("not logged in");
-      setErr("Details do not match!");
-    }
+    login(details);
   };
-
-  isAuth ? setShowNav(true) : setShowNav(false);
-  isAuth ? setShowFooter(true) : setShowFooter(false);
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-screen">
@@ -133,7 +117,7 @@ setIsAuth(true)
               </button>
 
               <button
-            onClick={signInWithGoogle}
+                onClick={signInWithGoogle}
                 type="submit"
                 className="w-full text-white bg-primary-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >

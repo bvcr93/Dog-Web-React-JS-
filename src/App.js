@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer";
-import Nav from "./components/Nav";
+
 import About from "./pages/About";
 import Details from "./pages/Details";
 import Contact from "./pages/Contact";
@@ -13,9 +12,6 @@ import LoginForm from "./pages/LoginForm";
 import SharedLayout from "./components/SharedLayout";
 
 const App = () => {
-  const [showNav, setShowNav] = useState(false);
-  const [showFooter, setShowFooter] = useState(false);
-
   return (
     <UserProvider>
       <BrowserRouter>
@@ -31,15 +27,7 @@ const App = () => {
               <Route path="/contact" element={<Contact />} />
             </Route>
           </Route>
-          <Route
-            path="/login"
-            element={
-              <LoginForm
-                setShowNav={setShowNav}
-                setShowFooter={setShowFooter}
-              />
-            }
-          />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

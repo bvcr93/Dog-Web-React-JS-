@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 import PersonIcon from "@mui/icons-material/Person";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import LoginIcon from "@mui/icons-material/Login";
@@ -9,8 +8,7 @@ import { UserContext } from "./UserContext";
 import { auth } from "../config/firebase";
 
 const Nav = () => {
-  const { setIsAuth, setUser, user, Login, adminUser } =
-    useContext(UserContext);
+  const { setIsAuth, adminUser } = useContext(UserContext);
 
   const [nav, setNav] = useState(false);
   const location = useLocation();
@@ -55,7 +53,7 @@ const Nav = () => {
         </div>
         <div className="flex-1 flex items-center justify-end mr-5">
           <button className="person-icon hidden md:flex items-center ">
-            <p className="text-blue-500">{auth.currentUser.displayName}</p>
+            {/* <p className="text-blue-500">{auth.currentUser.displayName}</p> */}
             {adminUser.name}
             <PersonIcon
               style={{
@@ -64,19 +62,17 @@ const Nav = () => {
                 color: "#555555",
               }}
             />
-          
           </button>
-          <Link to="/login">
-            <button className="login-btn " onClick={handleLogout}>
-              <LoginIcon
-                style={{
-                  fontSize: "35px",
-                  marginRight: "10px",
-                  color: "#555555",
-                }}
-              />
-            </button>
-          </Link>
+
+          <button className="login-btn " onClick={handleLogout}>
+            <LoginIcon
+              style={{
+                fontSize: "35px",
+                marginRight: "10px",
+                color: "#555555",
+              }}
+            />
+          </button>
 
           <button
             className="reorder-icon md:hidden flex"

@@ -4,16 +4,29 @@ export const UserContext = createContext();
 
 export function UserProvider(props) {
   const [showNav, setShowNav] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
 
+  const [isAuth, setIsAuth] = useState(() => {
+    let result = JSON.parse(localStorage.getItem("authorized"));
+    return result === true ? true : false;
+  });
+  console.log({ isAuth });
   const initValues = { username: "darel", email: "", password: "" };
   const [formValues, setFormValues] = useState(initValues);
   const [err, setErr] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   // const [user, setUser] = useState({name: "", email: ""})
 
-  const Login = (details) => {
-    console.log(details);
+  const login = (details) => {
+    if (
+      details.email === adminUser.email &&
+      details.password === adminUser.password &&
+      details.name === adminUser.name
+    ) {
+      setIsAuth(true);
+    } else {
+      console.log("not logged in");
+      setErr("Details do not match!");
+    }
   };
 
   const Logout = () => {
@@ -38,6 +51,8 @@ export function UserProvider(props) {
   useEffect(() => {
     if (isAuth) {
       localStorage.setItem("authorized", JSON.stringify(isAuth));
+    } else {
+      localStorage.removeItem("authorized");
     }
   }, [isAuth]);
 
@@ -57,7 +72,7 @@ export function UserProvider(props) {
         setIsSubmit,
         setFormValues,
 
-        Login,
+        login,
         Logout,
         adminUser,
       }}
