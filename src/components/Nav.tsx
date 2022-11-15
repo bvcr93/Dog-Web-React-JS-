@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import  { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import PersonIcon from "@mui/icons-material/Person";
@@ -53,7 +53,7 @@ const Nav = () => {
         </div>
         <div className="flex-1 flex items-center justify-end mr-5">
           <button className="person-icon hidden md:flex items-center ">
-            {/* <p className="text-blue-500">{auth.currentUser.displayName}</p> */}
+            <p className="text-blue-500">{auth.currentUser?.displayName}</p>
             {adminUser.name}
             <PersonIcon
               style={{

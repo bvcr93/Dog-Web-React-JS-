@@ -7,32 +7,16 @@ import Dog from "../components/Dog";
 
 import ReactPaginate from "react-paginate";
 
+
+
+
 const Shop = () => {
   const [dogs, setDogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState();
+  const [err, setErr] = useState(null);
   const [pageNum, setPageNum] = useState(0);
   const [query, setQuery] = useState("");
-  // useEffect(() => {
-  //   const options = {
-  //     method: "GET",
-  //     url: "https://dog-breeds2.p.rapidapi.com/dog_breeds",
-  //     headers: {
-  //       "X-RapidAPI-Key": "6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d",
-  //       "X-RapidAPI-Host": "dog-breeds2.p.rapidapi.com",
-  //     },
-  //   };
-
-  //   axios
-  //     .request(options)
-  //     .then(function (response) {
-  //       console.log(response);
-  //       setDogs(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  // }, []);
+  
 
   useEffect(() => {
     const options = {

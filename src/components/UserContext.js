@@ -14,7 +14,7 @@ export function UserProvider(props) {
   const [formValues, setFormValues] = useState(initValues);
   const [err, setErr] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
-  // const [user, setUser] = useState({name: "", email: ""})
+ 
 
   const login = (details) => {
     if (
@@ -39,15 +39,6 @@ export function UserProvider(props) {
     password: "123",
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormValues({ ...formValues, [name]: value });
-  //   console.log(value);
-  // };
-
-  // useEffect(() => {
-  //   localStorage.setItem("authorized", JSON.stringify(isAuth));
-  // }, [isAuth]);
   useEffect(() => {
     if (isAuth) {
       localStorage.setItem("authorized", JSON.stringify(isAuth));
@@ -70,7 +61,7 @@ export function UserProvider(props) {
         setErr,
         isSubmit,
         setIsSubmit,
-        setFormValues,
+        
 
         login,
         Logout,

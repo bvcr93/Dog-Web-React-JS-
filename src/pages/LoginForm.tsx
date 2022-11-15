@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FormEvent } from "react";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
 import { auth, provider } from "../config/firebase";
@@ -11,7 +11,7 @@ const LoginForm = () => {
   const { login, setIsAuth, isAuth, err } = useContext(UserContext);
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
-  const submitHandler = (e) => {
+  const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     login(details);
   };
@@ -44,7 +44,7 @@ const LoginForm = () => {
                   name="name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="First name..."
-                  required=""
+                  
                 />
                 <p className="text-red-500">{err}</p>
               </div>
@@ -63,7 +63,7 @@ const LoginForm = () => {
                   name="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
-                  required=""
+                 
                 />
                 <p className="text-red-500">{err}</p>
               </div>
@@ -82,7 +82,7 @@ const LoginForm = () => {
                   name="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  
                 />
               </div>
               <div className="flex items-center justify-between">
@@ -93,10 +93,10 @@ const LoginForm = () => {
                       aria-describedby="remember"
                       type="checkbox"
                       className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
+                      
                     />
                   </div>
-                  <div class="ml-3 text-sm">
+                  <div className="ml-3 text-sm">
                     <label
                       htmlFor="remember"
                       className="text-gray-500 dark:text-gray-300"
