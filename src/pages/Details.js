@@ -1,7 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Details.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import useFetch from "../components/useFetch";
+
+// interface Details {
+//   meta: string
+//   breed: string
+//   img: string
+
+//   origin: string 
+// }
 
 const Details = () => {
   const { id } = useParams();
@@ -9,7 +18,7 @@ const Details = () => {
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
-
+// const {dogs, loadingState ,error} = useFetch(`https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${id}`)
   useEffect(() => {
     const options = {
       method: "GET",

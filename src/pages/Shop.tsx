@@ -1,14 +1,20 @@
 import React from "react";
 import "../styles/Shop.css";
-
+import useFetch from "../components/useFetch";
 import { useEffect } from "react";
 import { useState } from "react";
 import Dog from "../components/Dog";
 
 import ReactPaginate from "react-paginate";
+import Input from "../components/Input";
 
-
-
+type Props  = {
+ 
+  origin: string
+  img: string
+  breed: string
+  selected: number
+}
 
 const Shop = () => {
   const [dogs, setDogs] = useState([]);
@@ -51,12 +57,12 @@ const Shop = () => {
   const pagesVisited = pageNum * dogsPerPage;
 
   const displayDogs = dogs
-    .filter((dog) => dog.breed.toLowerCase().includes(query))
+    .filter((dog: Props) => dog.breed.toLowerCase().includes(query))
     .slice(pagesVisited, pagesVisited + dogsPerPage)
-    .map((dog, key) => {
+    .map((dog: Props, key) => {
       return (
         <Dog
-          id={key}
+         
           key={key}
           origin={dog.origin}
           img ={dog.img}
@@ -66,18 +72,14 @@ const Shop = () => {
     });
 
   const pageCount = Math.ceil(dogs.length / dogsPerPage);
-  const changePage = ({ selected }) => {
+  const changePage = ({ selected}: Props) => {
     setPageNum(selected);
   };
 
   return (
-    <div className=" bg-gray-100  w-full flex flex-col ">
-      <input
-        className="w-[300px] m-auto mt-10 p-2"
-        type="text"
-        placeholder="Search for dog..."
-        onChange={(e) => setQuery(e.target.value)}
-      />
+    <div className=" bg-gray-100  ">
+     
+      <Input placeholder="Search dogs..." onChange={(e) => setQuery(e.target.value)}/>
 
       <div className=" shop-header flex h-[80vh] justify-center items-center grid-cols-1">
         {displayDogs}

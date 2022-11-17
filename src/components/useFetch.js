@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 const useFetch = (url) => {
   const [dogs, setDogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState();
+  const [loadingState, setLoadingState] = useState(true);
+  const [error, setError] = useState();
   useEffect(() => {
     const options = {
       method: "GET",
@@ -23,17 +23,17 @@ const useFetch = (url) => {
       .then((response) => {
         console.log(response);
         setDogs(response);
-        setLoading(false);
-        setErr(null);
+        setLoadingState(false);
+        setError(null);
       })
 
       .catch((err) => {
-        setLoading(false);
-        setErr(err.message);
+        setLoadingState(false);
+        setError(err.message);
       });
   }, [url]);
 
-  return { dogs, loading, err };
+  return { dogs, loadingState, error };
 };
 
 export default useFetch;

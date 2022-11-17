@@ -7,6 +7,7 @@ const Landing = () => {
       <div className="landing-container">
         <h1>WELCOME</h1>
         <h3>To my dog website</h3>
+       
       </div>
     </div>
   );
