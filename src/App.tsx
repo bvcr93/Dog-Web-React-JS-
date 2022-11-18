@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Details from "./pages/Details";
 import Contact from "./pages/Contact";
@@ -20,9 +19,7 @@ const App = () => {
             <Route element={<SharedLayout />} path="/">
               <Route index element={<Landing />} />
               <Route element={<About />} path="/about" />
-
               <Route element={<Details />} path="/details/:id/*" />
-
               <Route path="/shop" element={<Shop />} />
               <Route path="/contact" element={<Contact />} />
             </Route>

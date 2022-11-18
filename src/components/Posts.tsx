@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../styles/Posts.css";
 
 const Posts = () => {
@@ -18,11 +18,7 @@ const Posts = () => {
         soluta iste dolores eos dicta consequatur quidem incidunt in officiis
         odio! Nesciunt dignissimos, et voluptatum totam aliquam, debitis
       </div>
-
-      <div className="post-img">
-        {/* <img src="./images/samojed.jpg" alt="" className="samojed-img" /> */}
-      </div>
-    </div>
+     </div>
   );
 };
 

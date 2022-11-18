@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Details.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import useFetch from "../components/useFetch";
+
 
 // interface Details {
 //   meta: string
@@ -43,7 +43,7 @@ const Details = () => {
       .catch((err) => {
         setErr(err.message);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="details h-[90vh] flex items-center justify-center">
@@ -56,7 +56,7 @@ const Details = () => {
         >
           <p className="mb-4 text-blue-500 font-bold"> {detail.breed}</p>
 
-          <img src={detail.img} />
+          <img src={detail.img} alt="/"/>
           <div className="flex flex-col items-center justify-center mt-3">
             <p className="mb-4 ">Coat: {detail.meta.coat}</p>
             <p className="mb-4 ">Height: {detail.meta.height}</p>

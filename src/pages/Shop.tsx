@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Shop.css";
-import useFetch from "../components/useFetch";
+
 import { useEffect } from "react";
 import { useState } from "react";
 import Dog from "../components/Dog";
@@ -87,7 +87,7 @@ const Shop = () => {
         {err && <h2>{err}</h2>}
         {loading ? <div className="loader"></div> : null}
       </div>
-      <div className="flex  justify-center items-center">
+      <div className="flex  justify-center items-center ">
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}

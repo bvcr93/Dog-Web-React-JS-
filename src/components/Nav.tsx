@@ -15,10 +15,7 @@ const Nav = () => {
   useEffect(() => {
     setNav(false);
   }, [location]);
-  useEffect(() => {
-    console.log("a");
-  }, []);
-
+  
   const handleLogout = () => {
     setIsAuth(false);
   };
@@ -53,11 +50,11 @@ const Nav = () => {
         </div>
         <div className="flex-1 flex items-center justify-end mr-5">
           <button className="person-icon hidden md:flex items-center ">
-            <p className="text-blue-500">{auth.currentUser?.displayName}</p>
+            <p className="text-blue-500 mr-4">{auth.currentUser?.displayName}</p>
             {adminUser.name}
             <PersonIcon
               style={{
-                fontSize: "35px",
+                fontSize: "30px",
                 marginRight: "10px",
                 color: "#555555",
               }}
