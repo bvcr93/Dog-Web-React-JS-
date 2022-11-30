@@ -3,13 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Details.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-
 // interface Details {
 //   meta: string
 //   breed: string
 //   img: string
 
-//   origin: string 
+//   origin: string
 // }
 
 const Details = () => {
@@ -18,7 +17,7 @@ const Details = () => {
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
-// const {dogs, loadingState ,error} = useFetch(`https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${id}`)
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -56,7 +55,7 @@ const Details = () => {
         >
           <p className="mb-4 text-blue-500 font-bold"> {detail.breed}</p>
 
-          <img src={detail.img} alt="/"/>
+          <img src={detail.img} alt="/" />
           <div className="flex flex-col items-center justify-center mt-3">
             <p className="mb-4 ">Coat: {detail.meta.coat}</p>
             <p className="mb-4 ">Height: {detail.meta.height}</p>
