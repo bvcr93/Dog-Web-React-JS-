@@ -3,18 +3,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Details.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-// interface Details {
-//   meta: string
-//   breed: string
-//   img: string
+interface Details {
+  meta: {
+    coat: string;
+    height: string;
+    weight: string;
+  };
+  breed: string;
+  img: string;
 
-//   origin: string
-// }
+  origin: string;
+}
 
 const Details = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState<Details[]>([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
 

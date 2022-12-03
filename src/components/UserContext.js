@@ -3,31 +3,28 @@ import React, { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 export function UserProvider(props) {
-  const [showNav, setShowNav] = useState(false);
-
   const [isAuth, setIsAuth] = useState(() => {
     let result = JSON.parse(localStorage.getItem("authorized"));
     return result === true ? true : false;
   });
-  console.log({ isAuth });
-  const initValues = { username: "darel", email: "", password: "" };
-  const [formValues, setFormValues] = useState(initValues);
-  const [err, setErr] = useState("");
-  const [isSubmit, setIsSubmit] = useState(false);
- 
 
-  const login = (details) => {
-    if (
-      details.email === adminUser.email &&
-      details.password === adminUser.password &&
-      details.name === adminUser.name
-    ) {
-      setIsAuth(true);
-    } else {
-      console.log("not logged in");
-      setErr("Details do not match!");
-    }
-  };
+  const [err, setErr] = useState("");
+
+  // const login = ({ details }) => {
+  //   if (
+  //     details.email === adminUser.email &&
+  //     details.password === adminUser.password &&
+  //     details.name === adminUser.name
+  //   ) {
+  //     setIsAuth(true);
+  //   } else {
+  //     console.log("not logged in");
+  //     setErr("Details do not match!");
+  //   }
+  // };
+  const login = () => {
+    setIsAuth(true)
+  }
 
   const Logout = () => {
     console.log("logout");
@@ -52,17 +49,8 @@ export function UserProvider(props) {
       value={{
         isAuth,
         setIsAuth,
-        showNav,
-        setShowNav,
-        initValues,
-        formValues,
-        setFormValues,
         err,
         setErr,
-        isSubmit,
-        setIsSubmit,
-        
-
         login,
         Logout,
         adminUser,

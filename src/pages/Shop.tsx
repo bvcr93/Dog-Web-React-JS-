@@ -8,13 +8,12 @@ import Dog from "../components/Dog";
 import ReactPaginate from "react-paginate";
 import Input from "../components/Input";
 
-type Props  = {
- 
-  origin: string
-  img: string
-  breed: string
-  selected: number
-}
+type Props = {
+  origin: string;
+  img: string;
+  breed: string;
+  selected: number;
+};
 
 const Shop = () => {
   const [dogs, setDogs] = useState([]);
@@ -22,18 +21,17 @@ const Shop = () => {
   const [err, setErr] = useState(null);
   const [pageNum, setPageNum] = useState(0);
   const [query, setQuery] = useState("");
-  
 
   useEffect(() => {
     const options = {
       method: "GET",
       headers: {
-        'X-RapidAPI-Key': '6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d',
-        'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
+        "X-RapidAPI-Key": "6a2c45b0c7msh9003a768797bbe7p19e221jsna0f7ed43603d",
+        "X-RapidAPI-Host": "dog-breeds2.p.rapidapi.com",
       },
     };
 
-    fetch('https://dog-breeds2.p.rapidapi.com/dog_breeds', options)
+    fetch("https://dog-breeds2.p.rapidapi.com/dog_breeds", options)
       .then((response) => {
         if (!response.ok) {
           throw Error("could not fetch the data");
@@ -61,25 +59,21 @@ const Shop = () => {
     .slice(pagesVisited, pagesVisited + dogsPerPage)
     .map((dog: Props, key) => {
       return (
-        <Dog
-         
-          key={key}
-          origin={dog.origin}
-          img ={dog.img}
-          breed={dog.breed}
-        />
+        <Dog key={key} origin={dog.origin} img={dog.img} breed={dog.breed} />
       );
     });
 
   const pageCount = Math.ceil(dogs.length / dogsPerPage);
-  const changePage = ({ selected}: Props) => {
+  const changePage = ({ selected }: Props) => {
     setPageNum(selected);
   };
 
   return (
     <div className=" bg-gray-100  ">
-     
-      <Input placeholder="Search dogs..." onChange={(e) => setQuery(e.target.value)}/>
+      <Input
+        placeholder="Search dogs..."
+        onChange={(e) => setQuery(e.target.value)}
+      />
 
       <div className=" shop-header flex h-[80vh] justify-center items-center grid-cols-1">
         {displayDogs}
@@ -87,7 +81,7 @@ const Shop = () => {
         {err && <h2>{err}</h2>}
         {loading ? <div className="loader"></div> : null}
       </div>
-      <div className="flex  justify-center items-center ">
+      <div className="flex  justify-center md:items-center md:w-full  ">
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
