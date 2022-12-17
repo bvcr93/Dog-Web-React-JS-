@@ -1,4 +1,5 @@
-import React, { useState, useContext, FormEvent, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
 import { auth, provider } from "../config/firebase";
@@ -9,6 +10,8 @@ const LoginForm = () => {
   const [input, setInput] = useState("");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+
+
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     setIsAuth(true);
@@ -16,19 +19,20 @@ const LoginForm = () => {
   const { setIsAuth, isAuth, err, setErr } = useContext(UserContext);
 
   const submitHandler = (e: React.FormEvent) => {
+    if (pwd.length < 8) {
+      setIsAuth(false)
+      setErr("must contain more than 8 characters")
+    }
+
+    else {
+      setIsAuth(true);
+    }
     e.preventDefault();
-    setIsAuth(true);
+
     console.log(isAuth);
   };
 
-  useEffect(() => {
-    
-    if (input.length > 8) {
-      setErr("Cannot contain more than 8 characters");
-    } else {
-      setErr("");
-    }
-  }, [input, email]);
+  
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-screen">
@@ -51,10 +55,11 @@ const LoginForm = () => {
                   Your name
                 </label>
                 <Input
+                  type="text"
                   placeholder="name..."
                   onChange={(e) => setInput(e.target.value)}
                 />
-                {err && <p>{err}</p>}
+                {err && <p className="text-red-500">{err}</p>}
               </div>
               <div>
                 <label
@@ -64,10 +69,11 @@ const LoginForm = () => {
                   Your email
                 </label>
                 <Input
+                  type="email"
                   placeholder="Email..."
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                {err && <p>{err}</p>}
+                {err && <p className="text-red-500">{err}</p>}
               </div>
               <div>
                 <label
@@ -77,9 +83,11 @@ const LoginForm = () => {
                   Password
                 </label>
                 <Input
+                  type="password"
                   placeholder="Password"
                   onChange={(e) => setPwd(e.target.value)}
                 />
+                {err && <p className="text-red-500">{err}</p>}
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-start">

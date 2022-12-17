@@ -10,11 +10,6 @@ export function UserProvider(props) {
 
   const [err, setErr] = useState("");
 
-  
-  const login = () => {
-    setIsAuth(true)
-  }
-
   const Logout = () => {
     console.log("logout");
   };
@@ -40,7 +35,6 @@ export function UserProvider(props) {
         setIsAuth,
         err,
         setErr,
-     
         Logout,
         adminUser,
       }}

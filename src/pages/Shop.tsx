@@ -1,8 +1,7 @@
 import React from "react";
 import "../styles/Shop.css";
 
-import { useEffect } from "react";
-import { useState } from "react";
+
 import Dog from "../components/Dog";
 
 import ReactPaginate from "react-paginate";
@@ -41,6 +40,7 @@ const Shop = () => {
   return (
     <div className=" bg-gray-100  ">
       <Input
+        type="text"
         placeholder="Search dogs..."
         onChange={(e) => setQuery(e.target.value)}
       />
