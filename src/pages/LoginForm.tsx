@@ -1,22 +1,34 @@
-import React, { useState, useContext, FormEvent } from "react";
+import React, { useState, useContext, FormEvent, useEffect } from "react";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
 import { auth, provider } from "../config/firebase";
 import { signInWithPopup } from "firebase/auth";
-import Login from "@mui/icons-material/Login";
+import Input from "../components/Input";
+
 const LoginForm = () => {
+  const [input, setInput] = useState("");
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     setIsAuth(true);
   };
-  const { login, setIsAuth, isAuth, err } = useContext(UserContext);
-  const [details, setDetails] = useState({ name: "", email: "", password: "" });
+  const { setIsAuth, isAuth, err, setErr } = useContext(UserContext);
 
-  const submitHandler = (e:React.FormEvent) => {
+  const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    // login(details);
-    login()
+    setIsAuth(true);
+    console.log(isAuth);
   };
+
+  useEffect(() => {
+    
+    if (input.length > 8) {
+      setErr("Cannot contain more than 8 characters");
+    } else {
+      setErr("");
+    }
+  }, [input, email]);
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-screen">
@@ -38,16 +50,11 @@ const LoginForm = () => {
                 >
                   Your name
                 </label>
-                <input
-                  onChange={(e) =>
-                    setDetails({ ...details, name: e.target.value })
-                  }
-                  type="text"
-                  name="name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="First name..."
+                <Input
+                  placeholder="name..."
+                  onChange={(e) => setInput(e.target.value)}
                 />
-                <p className="text-red-500">{err}</p>
+                {err && <p>{err}</p>}
               </div>
               <div>
                 <label
@@ -56,16 +63,11 @@ const LoginForm = () => {
                 >
                   Your email
                 </label>
-                <input
-                  onChange={(e) =>
-                    setDetails({ ...details, email: e.target.value })
-                  }
-                  type="email"
-                  name="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
+                <Input
+                  placeholder="Email..."
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <p className="text-red-500">{err}</p>
+                {err && <p>{err}</p>}
               </div>
               <div>
                 <label
@@ -74,14 +76,9 @@ const LoginForm = () => {
                 >
                   Password
                 </label>
-                <input
-                  onChange={(e) =>
-                    setDetails({ ...details, password: e.target.value })
-                  }
-                  type="password"
-                  name="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                <Input
+                  placeholder="Password"
+                  onChange={(e) => setPwd(e.target.value)}
                 />
               </div>
               <div className="flex items-center justify-between">

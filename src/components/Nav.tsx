@@ -8,7 +8,7 @@ import { UserContext } from "./UserContext";
 import { auth } from "../config/firebase";
 
 const Nav = () => {
-  const { setIsAuth, adminUser } = useContext(UserContext);
+  const { isAuth,setIsAuth, adminUser } = useContext(UserContext);
 
   const [nav, setNav] = useState(false);
   const location = useLocation();
@@ -18,6 +18,8 @@ const Nav = () => {
   
   const handleLogout = () => {
     setIsAuth(false);
+    console.log(isAuth);
+    
   };
 
   return (

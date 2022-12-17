@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../styles/Dog.css";
+
 
 type Props = {
   img: string
@@ -10,7 +10,7 @@ type Props = {
 
 const Dog = ({ img, breed }: Props) => {
   return (
-    <div className="dog-container bg-white w-[300px] rounded overflow-hidden shadow-lg m-5 h-[60%]">
+    <div className="dog-container bg-white w-[300px] rounded overflow-hidden shadow-lg m-5 md:h-[60%] h-[400px]">
       <div className="dog-cart ">
         <img className="dog-img w-[100%] h-[230px]" src={img} alt="/" />
 

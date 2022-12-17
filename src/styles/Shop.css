@@ -1,11 +1,9 @@
-
 .paginationBttns {
   width: 80%;
   height: 40px;
   list-style: none;
   display: flex;
   justify-content: center;
-  
 }
 
 .paginationBttns a {
@@ -27,28 +25,6 @@
   background-color: #61a0f3;
 }
 
-@media only screen and (max-width: 1700px) {
-  .shop-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: auto;
-  }
-}
-@media only screen and (max-width: 700px) {
-  .paginationBttns{
-  display: flex;
-  justify-content: center;
-
-  }
-}
-@media only screen and (max-width: 700px) {
-  .shop-header {
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-    height: auto;
-  }
-}
 
 
 .loader {
@@ -66,5 +42,11 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 700px) {
+  .paginationBttns {
+    display: flex;
+    justify-content: center;
   }
 }

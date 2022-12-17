@@ -10,18 +10,7 @@ export function UserProvider(props) {
 
   const [err, setErr] = useState("");
 
-  // const login = ({ details }) => {
-  //   if (
-  //     details.email === adminUser.email &&
-  //     details.password === adminUser.password &&
-  //     details.name === adminUser.name
-  //   ) {
-  //     setIsAuth(true);
-  //   } else {
-  //     console.log("not logged in");
-  //     setErr("Details do not match!");
-  //   }
-  // };
+  
   const login = () => {
     setIsAuth(true)
   }
@@ -51,7 +40,7 @@ export function UserProvider(props) {
         setIsAuth,
         err,
         setErr,
-        login,
+     
         Logout,
         adminUser,
       }}
