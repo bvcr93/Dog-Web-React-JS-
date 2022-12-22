@@ -8,7 +8,7 @@ import { UserContext } from "./UserContext";
 import { auth } from "../config/firebase";
 
 const Nav = () => {
-  const { isAuth,setIsAuth, adminUser } = useContext(UserContext);
+  const { isAuth,setIsAuth, adminUser } = useContext(UserContext) || {};
 
   const [nav, setNav] = useState(false);
   const location = useLocation();
@@ -17,10 +17,12 @@ const Nav = () => {
   }, [location]);
   
   const handleLogout = () => {
-    setIsAuth(false);
+    if (setIsAuth) {
+      setIsAuth(false);
+    }
     console.log(isAuth);
-    
   };
+  
 
   return (
     <div className="sticky top-0 z-10">
@@ -53,7 +55,7 @@ const Nav = () => {
         <div className="flex-1 flex items-center justify-end mr-5">
           <button className="person-icon hidden md:flex items-center ">
             <p className="text-blue-500 mr-4">{auth.currentUser?.displayName}</p>
-            {adminUser.name}
+            {adminUser!.name}
             <PersonIcon
               style={{
                 fontSize: "30px",

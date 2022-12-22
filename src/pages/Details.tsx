@@ -8,18 +8,22 @@ import Card from "../components/Card";
 interface Details {
   meta: {
     coat: string;
-    height: string;
+    height: {
+      bitches: string
+      dogs: string
+    }
     weight: string;
   };
   breed: string;
   img: string;
   origin: string;
+ 
 }
 
 const Details = () => {
   const { id } = useParams();
 
-  const [details, setDetails] = useState<Details[]>([]);
+  const [details, setDetails] = useState<Details[] >([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
 

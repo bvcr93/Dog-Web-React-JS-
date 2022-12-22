@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../components/UserContext";
 import { Navigate } from "react-router-dom";
@@ -6,33 +5,29 @@ import { auth, provider } from "../config/firebase";
 import { signInWithPopup } from "firebase/auth";
 import Input from "../components/Input";
 
+
 const LoginForm = () => {
   const [input, setInput] = useState("");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-
+  const { setIsAuth, isAuth, err, setErr } = useContext(UserContext);
 
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     setIsAuth(true);
   };
-  const { setIsAuth, isAuth, err, setErr } = useContext(UserContext);
 
   const submitHandler = (e: React.FormEvent) => {
     if (pwd.length < 8) {
-      setIsAuth(false)
-      setErr("must contain more than 8 characters")
-    }
-
-    else {
+      setIsAuth(false);
+      setErr("must contain more than 8 characters");
+    } else {
       setIsAuth(true);
     }
     e.preventDefault();
 
     console.log(isAuth);
   };
-
-  
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-screen">
