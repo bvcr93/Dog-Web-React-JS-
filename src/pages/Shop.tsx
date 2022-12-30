@@ -44,8 +44,15 @@ const Shop = () => {
         placeholder="Search dogs..."
         onChange={(e) => setQuery(e.target.value)}
       />
+      <form>
+        <select name="" id="">
+          <option value="" selected disabled></option>
+          <option value="husky">husky</option>
+          <option value="">husky</option>
+        </select>
+      </form>
 
-      <div className=" shop-header h-auto md:h-[80vh] place-items-center justify-center md:grid-cols-2 items-center grid grid-cols-1 md:flex">
+      <div className=" h-auto md:h-[80vh] place-items-center justify-center md:grid-cols-3 items-center grid grid-cols-1 md:flex">
         {displayDogs}
 
         {err && <h2>{err}</h2>}

@@ -26,7 +26,7 @@ const Nav = () => {
 
   return (
     <div className="sticky top-0 z-10">
-      <div className=" flex justify-center h-[80px] items-center  bg-indigo-100 shadow-lg shadow-indigo-300/40">
+      <div className=" flex justify-center h-[80px] items-center  bg-slate-100 shadow-lg shadow-stone-300/40">
         <div className="flex flex-1 ml-6  ">
           <Link to="/">
             <button className="text-3xl text-slate-700">Adopt Me</button>

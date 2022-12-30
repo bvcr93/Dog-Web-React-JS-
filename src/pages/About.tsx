@@ -1,4 +1,5 @@
 import React from "react";
+import ImageGallery from "../components/ImageGallery";
 
 import Posts from "../components/Posts";
 import Sidebar from "../components/Sidebar";
@@ -22,6 +23,9 @@ const About = () => {
       <div className=" md:flex grid grid-cols-1 text-center place-items-center ">
         <Posts />
         <Sidebar />
+      </div>
+<div className="">
+      <ImageGallery results={[]} />
       </div>
     </div>
   );
